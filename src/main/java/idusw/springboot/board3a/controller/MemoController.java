@@ -1,7 +1,7 @@
-package idusw.springboot.boardegyou.controller;
+package idusw.springboot.board3a.controller;
 
-import idusw.springboot.boardegyou.domain.Memo;
-import idusw.springboot.boardegyou.service.MemoService;
+import idusw.springboot.board3a.domain.Memo;
+import idusw.springboot.board3a.service.MemoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/memo")
+@RequestMapping("/memos")
 public class MemoController {
     // 생성자 주입 (Constructor DI)
     MemoService memoService;
@@ -23,7 +23,7 @@ public class MemoController {
 
     @GetMapping("/tables")
     public String getTables() {
-        return "/memo/tables";
+        return "/memos/tables";
     }
 
     @GetMapping("/init")
@@ -31,15 +31,15 @@ public class MemoController {
         List<Memo> result = new ArrayList<>();
         result = memoService.initialize();
         model.addAttribute("attr", result);
-        return "/memo/list";
+        return "redirect:/memos";
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String getList(Model model) {
         List<Memo> result = new ArrayList<>();
         result = memoService.readList(); // 여기를 수정함
         model.addAttribute("attr", result);
-        return "/memo/list";
+        return "/memos/list";
     }
 
     @GetMapping("/{mno}")
@@ -49,6 +49,6 @@ public class MemoController {
         m.setMno(mno);
         result = memoService.read(m); // 여기를 수정함
         model.addAttribute("attr", result);
-        return "/memo/one";
+        return "/memos/one";
     }
 }
