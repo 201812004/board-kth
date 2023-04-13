@@ -14,9 +14,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/memos")
 public class MemoController {
-    // 생성자 주입 (Constructor DI)
+    // 생성자 주입 (Constructor DI) s IoC(Inversion fo Control) 기법 중 하나가 DI,DL ...
     MemoService memoService;
-
     public MemoController(MemoService memoService) {
         this.memoService = memoService;
     }
