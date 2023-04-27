@@ -9,12 +9,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class MemberControllerTests {
+public class MemberControllerTests { // Unit Test : JUnit - Test Framework
     @Autowired
     MemberService memberService;
-
+    /*
+    @Autowired
+    MemberRepository memberRepository;
+    */
     @Test
-    void contextLoads(){
+    void contextLoads() {
         List<Member> result = memberService.readList();
         for(Member m : result)
             System.out.println(m.getSeq() + ":" + m.getEmail() + ":" + m.getName());
